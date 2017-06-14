@@ -17,4 +17,8 @@ export class Register {
       this.router.navigate("");
     }
   }
+
+  get canRegister() {
+    return this.newUser && this.newUser.userName && this.newUser.firstName && this.newUser.lastName && this.newUser.password;
+  }
 }

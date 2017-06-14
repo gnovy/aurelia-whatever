@@ -23,7 +23,7 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Password" value.bind="newUser.password">
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary" disabled.bind="!canRegister">Register</button>
       </form>
     </div>
     <div class="col-md-4"></div>
