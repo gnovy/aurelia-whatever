@@ -4,28 +4,44 @@
     <ux-dialog-body>
       <h2>Registration</h2>
       <form submit.trigger="register()">
-        <div class="form-group">
+        <div class="form-group" validation-errors.bind="userNameErrors"
+             class.bind="userNameErrors.length ? 'has-error' : ''">
           <label for="userName">UserName</label>
-          <input class="form-control" id="userName" placeholder="UserName" value.bind="newUser.userName">
+          <input class="form-control" id="userName" placeholder="UserName" value.bind="newUser.userName & validate">
+          <span class="help-block" repeat.for="errorInfo of userNameErrors">
+            ${errorInfo.error.message}
+          </span>
         </div>
-        <div class="form-group">
+        <div class="form-group" validation-errors.bind="firstNameErrors"
+             class.bind="firstNameErrors.length ? 'has-error' : ''">
           <label for="firstName">First Name</label>
-          <input class="form-control" id="firstName" placeholder="First Name" value.bind="newUser.firstName">
+          <input class="form-control" id="firstName" placeholder="First Name" value.bind="newUser.firstName & validate">
+          <span class="help-block" repeat.for="errorInfo of firstNameErrors">
+            ${errorInfo.error.message}
+          </span>
         </div>
-        <div class="form-group">
+        <div class="form-group" validation-errors.bind="lastNameErrors"
+             class.bind="lastNameErrors.length ? 'has-error' : ''">
           <label for="lastName">Last Name</label>
-          <input class="form-control" id="lastName" placeholder="Last Name" value.bind="newUser.lastName">
+          <input class="form-control" id="lastName" placeholder="Last Name" value.bind="newUser.lastName & validate">
+          <span class="help-block" repeat.for="errorInfo of lastNameErrors">
+            ${errorInfo.error.message}
+          </span>
         </div>
-        <div class="form-group">
+        <div class="form-group" validation-errors.bind="passwordErrors"
+             class.bind="passwordErrors.length ? 'has-error' : ''">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" value.bind="newUser.password">
+          <input type="password" class="form-control" id="password" placeholder="Password" value.bind="newUser.password & validate">
+          <span class="help-block" repeat.for="errorInfo of passwordErrors">
+            ${errorInfo.error.message}
+          </span>
         </div>
       </form>
     </ux-dialog-body>
 
     <ux-dialog-footer>
       <button type="button" click.trigger="dialogController.cancel()" class="btn btn-secondary">Cancel</button>
-      <button type="button" click.trigger="register()" class="btn btn-primary" disabled.bind="!canRegister">Register</button>
+      <button type="button" click.trigger="register()" class="btn btn-primary">Register</button>
     </ux-dialog-footer>
   </ux-dialog>
 
