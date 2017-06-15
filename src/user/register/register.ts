@@ -1,21 +1,26 @@
-import {inject} from 'aurelia-framework';
+import {autoinject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {RegisterService} from "./register-service";
 import {User} from "../user";
+import {DialogController} from 'aurelia-dialog';
 
-@inject(RegisterService, Router)
+@autoinject
 export class Register {
   isUserNameExists = false;
   newUser: User;
 
-  constructor(private registerService: RegisterService, private router: Router) {}
+  constructor(private registerService: RegisterService,
+              private router: Router,
+              private dialogController: DialogController) {}
 
   register() {
     this.isUserNameExists = this.registerService.register(this.newUser);
 
-    if(!this.isUserNameExists){
+    this.dialogController.ok();
+
+    /*if(!this.isUserNameExists){
       this.router.navigate("");
-    }
+    }*/
   }
 
   get canRegister() {
