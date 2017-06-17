@@ -1,0 +1,20 @@
+<template>
+  <require from="bootstrap/css/bootstrap.css"></require>
+  <require from="semantic/semantic.css"></require>
+
+  <nav class="navbar navbar-inverse navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Aurelia Whatever</a>
+      </div>
+      <div class="nav navbar-right">
+        <a class="navbar-brand" href="#" >Login</a>
+        <a class="navbar-brand" click.trigger="register()">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <router-view></router-view>
+  </div>
+</template>
